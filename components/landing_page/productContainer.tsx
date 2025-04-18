@@ -5,6 +5,7 @@ import PaginationControls from "@/components/layout/paginationControls";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 
+
 export default async function ProductContainer({
   page = 1,
 }: {

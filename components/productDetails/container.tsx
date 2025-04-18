@@ -6,6 +6,8 @@ import { createClient } from "@/lib/supabase/server";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle, ShoppingCart } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
+import Skeleton from "@/components/productDetails/skeleton";
 
 interface ContainerProps {
   params: {
@@ -44,42 +46,45 @@ export default async function Container({ params }: ContainerProps) {
   }
 
   return (
-    <section className="lg:mt-8 mt-5">
-      <Image
-        src="/images/heroImae.jpg"
-        alt={product.productName}
-        width={1200}
-        height={800}
-        quality={100}
-        className="w-11/12 lg:h-[60vh] h-[50vh] mx-auto rounded-2xl object-cover"
-      />
+    <Suspense fallback={<Skeleton />}>
+      {" "}
+      <section className="lg:mt-8 mt-5">
+        <Image
+          src="/images/heroImage.jpg"
+          alt={product.productName}
+          width={1200}
+          height={800}
+          quality={100}
+          className="w-11/12 lg:h-[60vh] h-[50vh] mx-auto rounded-2xl object-cover"
+        />
 
-      <Line className="w-11/12 mx-auto lg:my-8 my-5" />
+        <Line className="w-11/12 mx-auto lg:my-8 my-5" />
 
-      <div className="lg:w-9/12 w-11/12 mx-auto">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-4xl font-bold text-left">
-            {product.productName}
-          </h1>
-          <p className="text-2xl font-semibold text-primary">
-            &#8358; {product.productPrice}
+        <div className="lg:w-9/12 w-11/12 mx-auto">
+          <div className="flex justify-between items-center mb-4">
+            <h1 className="text-4xl font-bold text-left">
+              {product.productName}
+            </h1>
+            <p className="text-2xl font-semibold text-primary">
+              &#8358; {product.productPrice}
+            </p>
+          </div>
+          <p className="text-left text-gray-500 mb-6">
+            {product.productDescription}
           </p>
         </div>
-        <p className="text-left text-gray-500 mb-6">
-          {product.productDescription}
-        </p>
-      </div>
 
-      <div className="py-10 flex gap-4 lg:w-9/12 w-11/12 mx-auto">
-        <Button className="flex-1 text-lg font-semibold">
-          <ShoppingCart className="mr-2 h-5 w-5" /> Buy Now
-        </Button>
-        <Link href="/products">
-          <Button variant="outline" className="text-lg font-semibold">
-            Back to Products
+        <div className="py-10 flex gap-4 lg:w-9/12 w-11/12 mx-auto">
+          <Button className="flex-1 text-lg font-semibold">
+            <ShoppingCart className="mr-2 h-5 w-5" /> Buy Now
           </Button>
-        </Link>
-      </div>
-    </section>
+          <Link href="/">
+            <Button variant="outline" className="text-lg font-semibold">
+              Back to Products
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </Suspense>
   );
 }

@@ -58,7 +58,7 @@ export default function ProductCard({
         </div>
 
         <CardFooter className="flex justify-between">
-          <Link href={`/${id}`}>
+          <Link href={`/products/${id}`}>
             <Button variant="outline">View Details</Button>
           </Link>
           <Link href={`/checkout/${id}`}>
