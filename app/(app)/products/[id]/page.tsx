@@ -1,6 +1,12 @@
 import Container from "@/components/productDetails/container";
 
-export default function ProductDetails({ params }: { params: { id: string } }) {
+interface ProductDetailsProps {
+  params: {
+    id: string;
+  };
+}
+
+export default function ProductDetails({ params }: ProductDetailsProps) {
   return (
     <div>
       <Container params={params} />
