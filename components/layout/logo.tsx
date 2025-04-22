@@ -1,5 +1,9 @@
 import Link from "next/link";
 
-export default function Logo() {
-    return <Link href="/" className="lg:text-lg text-[16px] font-semibold">agromarket</Link>
+interface LogoProps {
+    className: string;
+}
+
+export default function Logo( { className }: LogoProps) {
+    return <Link href="/" className={`${className} lg:text-lg text-[16px] font-semibold`}>agromarket</Link>
 }

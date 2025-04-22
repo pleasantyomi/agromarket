@@ -15,4 +15,3 @@ export default function ProductDetails({ params }: ProductDetailsProps) {
     </div>
   );
 }
-s
