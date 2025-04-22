@@ -3,15 +3,15 @@ import Container from "@/components/productDetails/container";
 import { type Metadata, type ResolvingMetadata } from "next";
 
 interface ProductDetailsProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{id: string}>;
 }
 
-export default function ProductDetails({ params }: ProductDetailsProps) {
+export default async function ProductDetails({ params }: ProductDetailsProps) {
+  const id = await params;
+
   return (
     <div>
-      <Container params={params} />
+      <Container params={id} />
     </div>
   );
 }
